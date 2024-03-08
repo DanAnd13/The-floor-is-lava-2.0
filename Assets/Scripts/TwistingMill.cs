@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TwistingMill : MonoBehaviour
 {
     public Vector3 rotateChange;
-    // Start is called before the first frame update
-    void Start()
+    public Button playButton;
+    public Button stopButton;
+    public Image menu;
+    public bool isPlaying()
+    {
+        if (playButton.IsActive())
+            return false;
+        else if (stopButton.IsActive())
+            return true;
+        else if (menu.IsActive())
+            return false;
+        else return false;
+    }
+        void Start()
     {
         
     }
@@ -14,6 +27,7 @@ public class TwistingMill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(rotateChange);
+        if(isPlaying())
+            transform.Rotate(rotateChange);
     }
 }
